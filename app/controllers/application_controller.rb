@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
 
     patient = Patient.create(:username=> params["username"], :email => params["email"], :password => params["password"])
     patient.save
-    session[:user_id] == patient.id
+    session[:patient_id] == patient.id
     redirect to '/patients'
 end
 

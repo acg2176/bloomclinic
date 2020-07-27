@@ -7,7 +7,7 @@ end
 
 
 use Rack::MethodOverride
-## use AppointmentsController
-## use TherapistsController
-## use UsersController
+use AppointmentsController
+use TherapistsController
+use PatientsController
 run ApplicationController
