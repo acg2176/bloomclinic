@@ -33,6 +33,11 @@ class PatientsController < ApplicationController
             redirect to '/'
         end
     end
+
+    get '/patients/:slug' do
+        @patient = Patient.find_by_slug(params[:slug])
+        erb:'/patients/show'
+    end
     
 
 

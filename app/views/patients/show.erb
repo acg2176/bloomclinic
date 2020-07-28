@@ -1,0 +1,7 @@
+<h1>Hi, <%= @patient.username %>!</h1>
+<h2>Your Appointments</h2>
+<% @patient.appointments.each do |appointment| %>
+    <ul>
+    <li><%= appointment.date %>: <%= appointment.time %></li>
+<% end %>
+    </ul>
