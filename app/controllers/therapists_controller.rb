@@ -3,4 +3,5 @@ class TherapistsController < ApplicationController
 
     #'/therapists/:slug'
 
+
 end

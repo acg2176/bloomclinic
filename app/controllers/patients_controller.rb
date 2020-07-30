@@ -1,6 +1,7 @@
+require 'sinatra/base'
 require 'rack-flash'
 class PatientsController < ApplicationController
-    use Rack::flash
+    use Rack::Flash
     configure do
         enable :sessions
         set :session_secret, "secret"
@@ -34,9 +35,11 @@ class PatientsController < ApplicationController
         end
     end
 
-    get '/patients/:slug' do
-        @patient = Patient.find_by_slug(params[:slug])
-        erb:'/patients/show'
+    #shows appointments and patient prescriptions and history
+    #add notes feature created by the client to keep track of what happened in that appointment?
+    get '/patients/:username' do
+        @patient = Patient.find_by(params[:username])
+        erb :'/patients/show'
     end
     
 
