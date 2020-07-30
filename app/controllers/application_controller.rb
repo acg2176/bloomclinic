@@ -1,6 +1,5 @@
 require './config/environment'
 
-
 class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
@@ -24,10 +23,11 @@ class ApplicationController < Sinatra::Base
     if params["username"] == "" || params["password"] == "" || params["email"] == ""
         redirect to '/signup'
     end
-
+    puts params
+    #binding.pry
     patient = Patient.create(:username=> params["username"], :email => params["email"], :password => params["password"])
     patient.save
-    session[:patient_id] == patient.id
+    session[:user_id] == patient.id
     redirect to '/appointments'
 end
 
