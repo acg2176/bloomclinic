@@ -23,9 +23,8 @@ class ApplicationController < Sinatra::Base
     if params["username"] == "" || params["password"] == "" || params["email"] == ""
         redirect to '/signup'
     end
-    puts params
-    #binding.pry
-    patient = Patient.create(:username=> params["username"], :email => params["email"], :password => params["password"])
+    patient = Patient.create(:username=> params["patient"]["username"], :email => params["patient"]["email"], :password => params["patient"]["password"])
+
     patient.save
     session[:user_id] == patient.id
     redirect to '/appointments'

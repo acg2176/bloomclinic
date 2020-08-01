@@ -17,10 +17,9 @@ class PatientsController < ApplicationController
     end
 
     post '/login' do
-        binding.pry
-        patient = Patient.find_by(:username => params[:username])
-        if patient && patient.authenticate(params[:password])
-            session[:user_id] = user.id
+        patient = Patient.find_by(:username => params["patient"]["username"])
+        if patient && patient.authenticate(params["patient"]["password"])
+            session[:user_id] = patient.id
             redirect "/appointments"
         else
             flash[:login_error] = "Incorrect login. Please sign up"
