@@ -10,6 +10,7 @@ class AppointmentsController < ApplicationController
         end
         @patient = Helpers.current_user(session)
         @appointments = Appointment.all
+        #need to fix the way the appointment list looks
         erb :'/appointments/appointments'
     end
 
@@ -29,8 +30,8 @@ class AppointmentsController < ApplicationController
         # {"appointment"=> {"therapists"=>["1"], "appt_date"=>"2020-08-03", "appt_time"=>"14:00"}}
         @appointment = Appointment.create(:therapist_id => params[:appointment][:therapists][0].to_i, :patient_id => patient.id, :appt_date => params[:appointment][:appt_date], :appt_time => params[:appointment][:appt_time])
         @appointment.save
-        redirect to '/appointments'
-        binding.pry
+        redirect to '/appointments/success'
+        
     end
 
     get '/appointments/success' do
