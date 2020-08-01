@@ -20,7 +20,7 @@ class PatientsController < ApplicationController
         patient = Patient.find_by(:username => params["patient"]["username"])
         if patient && patient.authenticate(params["patient"]["password"])
             session[:user_id] = patient.id
-            redirect "/appointments"
+            redirect "/patients/:username"
         else
             flash[:login_error] = "Incorrect login. Please sign up"
             redirect '/signup'
@@ -37,9 +37,9 @@ class PatientsController < ApplicationController
     end
 
     #shows appointments and patient prescriptions and history
-    #add notes feature created by the client to keep track of what happened in that appointment?
+    #this is patient's own page, lists all appointments
     get '/patients/:username' do
-        @patient = Patient.find_by(params[:username])
+        @patient = Helpers.current_user(session)
         erb :'/patients/show'
     end
     
