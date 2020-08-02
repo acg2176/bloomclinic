@@ -4,17 +4,15 @@ require 'pry'
 class AppointmentsController < ApplicationController
     use Rack::Flash
 
-    get '/appointments' do
+    get '/appointments/patient' do
         if !Helpers.is_logged_in?(session)
             redirect to '/login'
         end
         #@appointments = Appointment.all
         @patient = Helpers.current_user(session)
         #need to fix the way the appointment list looks
-        erb :'/patients/show'
+        erb :'/patients/show' #shows all patient's appointments
     end
-
-
 
     #book an appointment! new.erb should have a calendar feature that selects date and time
     #selects which therapist to choose
@@ -41,12 +39,12 @@ class AppointmentsController < ApplicationController
         erb :'/appointments/success'
     end
 
-    # TO Do: CRUD for appointments
+    # TO Do: CRUD for appointments (create DONE read TODO update TODO delete TODO)
     get '/appointments/:time' do
         if !Helpers.is_logged_in?(session)
             redirect to '/login'
         end
-        erb :'/appointments/show_appointment'
+        erb :'/appointments/show_appointment' #FIX THIS: add all information for this appointment
     end
 
 end

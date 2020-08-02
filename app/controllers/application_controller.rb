@@ -8,6 +8,7 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "password_security"
   end
 
+  #possibly asks if user is a therapist/provider or a patient?
   get '/' do
     erb :index
   end

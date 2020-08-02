@@ -10,7 +10,7 @@ class PatientsController < ApplicationController
 
     get '/login' do
         if Helpers.is_logged_in?(session)
-            redirect to '/appointments'
+            redirect to '/appointments/patient'
         end
 
         erb :'/patients/login'
@@ -22,7 +22,7 @@ class PatientsController < ApplicationController
         if patient && patient.authenticate(params["patient"]["password"])
             session[:user_id] = patient.id
             #redirect "/patient"
-            redirect "/appointments"
+            redirect "/appointments/patient"
         else
             flash[:login_error] = "Incorrect login. Please sign up"
             redirect '/signup'
@@ -40,11 +40,11 @@ class PatientsController < ApplicationController
 
      #shows appointments and patient prescriptions and history
     #this is patient's own page, lists all appointments
-    get '/patient' do
-        binding.pry
-        @patient = Helpers.current_user(session)
-        erb :'/patients/show'
-    end
+    # get '/patient' do
+    #     binding.pry
+    #     @patient = Helpers.current_user(session)
+    #     erb :'/patients/show'
+    # end
 
 
     
