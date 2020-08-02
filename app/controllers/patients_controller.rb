@@ -17,10 +17,12 @@ class PatientsController < ApplicationController
     end
 
     post '/login' do
+        #binding.pry
         patient = Patient.find_by(:username => params["patient"]["username"])
         if patient && patient.authenticate(params["patient"]["password"])
             session[:user_id] = patient.id
-            redirect "/patients/:username"
+            #redirect "/patient"
+            redirect "/appointments"
         else
             flash[:login_error] = "Incorrect login. Please sign up"
             redirect '/signup'
@@ -36,12 +38,15 @@ class PatientsController < ApplicationController
         end
     end
 
-    #shows appointments and patient prescriptions and history
+     #shows appointments and patient prescriptions and history
     #this is patient's own page, lists all appointments
-    get '/patients/:username' do
+    get '/patient' do
+        binding.pry
         @patient = Helpers.current_user(session)
         erb :'/patients/show'
     end
+
+
     
 
 

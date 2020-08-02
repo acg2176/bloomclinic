@@ -4,15 +4,17 @@ require 'pry'
 class AppointmentsController < ApplicationController
     use Rack::Flash
 
-    #this lists all the appointments made at Bloom Clinic. Therapists can see this information
     get '/appointments' do
         if !Helpers.is_logged_in?(session)
             redirect to '/login'
         end
-        @appointments = Appointment.all
+        #@appointments = Appointment.all
+        @patient = Helpers.current_user(session)
         #need to fix the way the appointment list looks
-        erb :'/appointments/appointments'
+        erb :'/patients/show'
     end
+
+
 
     #book an appointment! new.erb should have a calendar feature that selects date and time
     #selects which therapist to choose
@@ -27,14 +29,15 @@ class AppointmentsController < ApplicationController
 
     post '/appointments' do
         patient = Helpers.current_user(session)
-        # {"appointment"=> {"therapists"=>["1"], "appt_date"=>"2020-08-03", "appt_time"=>"14:00"}}
         @appointment = Appointment.create(:therapist_id => params[:appointment][:therapists][0].to_i, :patient_id => patient.id, :appt_date => params[:appointment][:appt_date], :appt_time => params[:appointment][:appt_time], :concern => params[:appointment][:concern])
+        #binding.pry
         @appointment.save
         redirect to '/appointments/success'
         
     end
 
     get '/appointments/success' do
+        @patient = Helpers.current_user(session)
         erb :'/appointments/success'
     end
 

@@ -108,7 +108,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord (~> 6.0.0)
+  activerecord (~> 6.0.3.2)
   bcrypt
   capybara
   database_cleaner
