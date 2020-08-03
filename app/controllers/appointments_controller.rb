@@ -40,7 +40,7 @@ class AppointmentsController < ApplicationController
         erb :'/appointments/success'
     end
 
-    # TO Do: CRUD for appointments (create DONE read TODO update TODO delete TODO)
+    # TO Do: CRUD for appointments (create DONE read DONE update TODO delete TODO)
     get '/appointments/:id' do
         if !Helpers.is_logged_in?(session)
             redirect to '/login'
@@ -50,5 +50,21 @@ class AppointmentsController < ApplicationController
         @appointment = Appointment.find(params[:id])
         erb :'/appointments/show_appointment' #FIX THIS: add all information for this appointment
     end
+
+    get '/appointments/:id/edit' do
+        if !Helpers.is_logged_in?(session)
+            redirect to '/login'
+        end
+        @appointment = Appointment.find(params[:id])
+
+        if Helpers.current_user(session).id != @appointment.patient_id
+            flash[:message] = "WARNING: You can only make edits to your appointments."
+            redirect to '/appointments/patient'
+        end
+
+        erb :'/appointments/edit_appointment'
+    end
+
+
 
 end
