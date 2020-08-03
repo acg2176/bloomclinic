@@ -1,0 +1,19 @@
+<h3>Your appointment is scheduled on: <%= @appointment.appt_date %>
+<br><br>
+<h3>Appointment Time: <%= @appointment.appt_time %>
+<br><br>
+<h3>Therapist: <%= @appointment.therapist.name %></h3>
+<br><br>
+<h3>Purpose for Appointment: <%= @appointment.concern %>
+<br><br>
+
+
+<h3>Tips to make the most of your appointment:</h3>
+<ul>
+    <li>1. Keep a pen and notebook or journal on hand in order to take down notes.</li>
+    <li>2. Be present. Mindfulness is key!</li>
+    <li>3. Ask questions. Your therapist is there to help you answer any concerns that you have.</li>
+    <li>4. Bloom Clinic is a safe space and judgment-free zone. Rest assured that your privacy is of our utmost priority. Please refer to our confidentiality policy for further information.</li>
+</ul>
+
+<a href="/appointments/patient"><button>Back to Appointments</button></a>

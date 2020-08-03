@@ -10,6 +10,7 @@ class AppointmentsController < ApplicationController
         end
         #@appointments = Appointment.all
         @patient = Helpers.current_user(session)
+        #binding.pry
         #need to fix the way the appointment list looks
         erb :'/patients/show' #shows all patient's appointments
     end
@@ -40,10 +41,13 @@ class AppointmentsController < ApplicationController
     end
 
     # TO Do: CRUD for appointments (create DONE read TODO update TODO delete TODO)
-    get '/appointments/:time' do
+    get '/appointments/:id' do
         if !Helpers.is_logged_in?(session)
             redirect to '/login'
         end
+        #binding.pry
+        #@patient = Helpers.current_user(session)
+        @appointment = Appointment.find(params[:id])
         erb :'/appointments/show_appointment' #FIX THIS: add all information for this appointment
     end
 
