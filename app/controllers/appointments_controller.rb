@@ -46,7 +46,6 @@ class AppointmentsController < ApplicationController
             redirect to '/login'
         end
         #binding.pry
-        #@patient = Helpers.current_user(session)
         @appointment = Appointment.find(params[:id])
         erb :'/appointments/show_appointment' #FIX THIS: add all information for this appointment
     end
@@ -56,7 +55,8 @@ class AppointmentsController < ApplicationController
             redirect to '/login'
         end
         @appointment = Appointment.find(params[:id])
-
+        @therapists = Therapist.all
+        binding.pry
         if Helpers.current_user(session).id != @appointment.patient_id
             flash[:message] = "WARNING: You can only make edits to your appointments."
             redirect to '/appointments/patient'

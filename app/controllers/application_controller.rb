@@ -8,7 +8,6 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "password_security"
   end
 
-  #possibly asks if user is a therapist/provider or a patient?
   get '/' do
     erb :index
   end
@@ -29,6 +28,6 @@ class ApplicationController < Sinatra::Base
     patient.save
     session[:user_id] == patient.id
     redirect to '/appointments'
-end
+  end
 
 end

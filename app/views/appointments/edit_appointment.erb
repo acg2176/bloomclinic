@@ -1,0 +1,19 @@
+<form method="POST" action="/appointments/<%= @appointment.id %>">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <h3>You may change your therapist:</h3>
+    <% @therapists.each do |therapist| %>
+    <input type="radio" id="<%= therapist.name %>" name="appointment[therapists][]" value="<%= therapist.id %>" <%='checked' if @appointment.therapist == therapist %>><%= therapist.name %></input>
+    <% end %>
+<br><br>
+
+<label for="appt_date"><h3>Change your appointment date:</h3></label>
+<input type="date" id="appt_date" name="appointment[appt_date]" value="<%= @appointment.appt_date %>">
+<br><br>
+<label for="appt_time"><h3>Change your appointment time:</h3></label>
+<input type="time" id="appt_time" name="appointment[appt_time]" value=<%= @appointment.appt_time.strftime("%I:%M %p") %>>
+<br><br>
+<label for="concern"><h3>What is your Concern?</h3></label>
+<input type="text" id="concern" name="appointment[concern]" value="<%= @appointment.concern %>">
+<br><br>
+<input type="submit" value="Submit">
+</form>

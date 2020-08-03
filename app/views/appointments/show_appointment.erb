@@ -1,11 +1,12 @@
-<h3>Your appointment is scheduled on: <%= @appointment.appt_date %>
+<h3>Your appointment is scheduled on: <%= @appointment.appt_date.strftime("%A, %B %d") %></h3>
 <br><br>
-<h3>Appointment Time: <%= @appointment.appt_time %>
+<h3>Appointment Time: <%= @appointment.appt_time.strftime("%I:%M %p") %></h3>
 <br><br>
 <h3>Therapist: <%= @appointment.therapist.name %></h3>
 <br><br>
-<h3>Purpose for Appointment: <%= @appointment.concern %>
+<h3>Purpose for Appointment: <%= @appointment.concern %></h3>
 <br><br>
+<a href='/appointments/<%= @appointment.id %>/edit'><button>Edit Appointment</button></a>
 
 
 <h3>Tips to make the most of your appointment:</h3>
