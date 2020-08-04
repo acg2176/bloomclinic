@@ -45,8 +45,9 @@ class AppointmentsController < ApplicationController
         if !Helpers.is_logged_in?(session)
             redirect to '/login'
         end
-        #binding.pry
+       
         @appointment = Appointment.find(params[:id])
+         #binding.pry
         erb :'/appointments/show_appointment' #FIX THIS: add all information for this appointment
     end
 
@@ -66,9 +67,13 @@ class AppointmentsController < ApplicationController
     end
 
     patch '/appointments/:id' do
+        #fix patch
         binding.pry
         appointment = Appointment.find(params[:id])
-        appointment.update(:therapist_id => params["therapist_id"])
+        appointment.update(:therapist_id => params[:appointment][:therapists][0].to_i, :appt_date => params[:appointment][:appt_date], :appt_time => params[:appointment][:appt_time], :concern => params[:appointment][:concern])
+        appointment.save
+        flash[:message] = "Successfully updated appointment!"
+        redirect to "/appointments/#{appointment.id}"
     end
 
 
