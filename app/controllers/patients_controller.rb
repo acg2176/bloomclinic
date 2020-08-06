@@ -41,7 +41,10 @@ class PatientsController < ApplicationController
      #shows appointments and patient prescriptions and history
     #this is patient's own page, lists all appointments
     # get '/patient' do
-    #     binding.pry
+    #     if !Helpers.is_logged_in?(session)
+    #         redirect to '/login'
+    #     end
+    #     # binding.pry
     #     @patient = Helpers.current_user(session)
     #     erb :'/patients/show'
     # end

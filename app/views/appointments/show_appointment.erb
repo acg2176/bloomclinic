@@ -20,4 +20,9 @@
     <li>4. Bloom Clinic is a safe space and judgment-free zone. Rest assured that your privacy is of our utmost priority. Please refer to our confidentiality policy for further information.</li>
 </ul>
 
+<form method="POST" action="/appointments/<%= @appointment.id %>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Cancel your Appointment">
+</form>
+
 <a href="/appointments/patient"><button>Back to Appointments</button></a>

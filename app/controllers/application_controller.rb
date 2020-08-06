@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
 
     patient.save
     session[:user_id] == patient.id
-    redirect to '/appointments'
+    redirect to '/appointments/patient'
   end
 
 end

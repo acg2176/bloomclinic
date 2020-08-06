@@ -8,10 +8,8 @@ class AppointmentsController < ApplicationController
         if !Helpers.is_logged_in?(session)
             redirect to '/login'
         end
-        #@appointments = Appointment.all
         @patient = Helpers.current_user(session)
         #binding.pry
-        #need to fix the way the appointment list looks
         erb :'/patients/show' #shows all patient's appointments
     end
 
@@ -47,7 +45,7 @@ class AppointmentsController < ApplicationController
         end
        
         @appointment = Appointment.find(params[:id])
-         #binding.pry
+        #binding.pry
         erb :'/appointments/show_appointment' #FIX THIS: add all information for this appointment
     end
 
@@ -67,8 +65,6 @@ class AppointmentsController < ApplicationController
     end
 
     patch '/appointments/:id' do
-        #fix patch
-        binding.pry
         appointment = Appointment.find(params[:id])
         appointment.update(:therapist_id => params[:appointment][:therapists][0].to_i, :appt_date => params[:appointment][:appt_date], :appt_time => params[:appointment][:appt_time], :concern => params[:appointment][:concern])
         appointment.save
@@ -76,8 +72,24 @@ class AppointmentsController < ApplicationController
         redirect to "/appointments/#{appointment.id}"
     end
 
+    #fix delete
+    delete '/appointments/:id/delete' do
+        if !Helpers.is_logged_in?(session)
+            redirect to '/login'
+        end
+        binding.pry
+        @appointment = Appointment.find(params[:id])
+        if Helpers.current_user(session).id != @appointment.patient_id
+            flash[:error] = "You can only cancel your appointments."
+            redirect to '/appointments/patient'
+        end
+        @appointment.delete
+        redirect to 'appointments/deleted'
+    end
 
-
+    get '/appointments/deleted' do
+        erb :'/appointments/deleted'
+    end
 
 
 end

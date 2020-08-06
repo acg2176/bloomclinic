@@ -2,7 +2,7 @@
 <h2>Your Appointments</h2>
 <% @patient.appointments.each do |appointment| %>
     <ul>
-    <li><a href='/appointments/<%= appointment.id %>'><%= appointment.appt_date %>: <%= appointment.appt_time %></a></li>
+    <li><a href='/appointments/<%= appointment.id %>'><%= appointment.appt_date.strftime("%A, %B %d") %>: <%= appointment.appt_time.strftime("%I:%M %p") %></a></li>
     </ul>
 <% end %>
 <a href="/appointments/new"><button>Book a New Appointment</button></a>
