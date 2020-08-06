@@ -30,4 +30,7 @@ class ApplicationController < Sinatra::Base
     redirect to '/appointments/patient'
   end
 
+  get '/contact' do
+    erb :contact
+
 end
