@@ -1,3 +1,10 @@
+<% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %>
+<% if flash.has?(:error) %>
+<%= flash[:error] %>
+<% end %>
+
 <h1>Hi, <%= @patient.username %>!</h1>
 <h2>Your Appointments</h2>
 <% @patient.appointments.each do |appointment| %>

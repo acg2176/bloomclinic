@@ -3,14 +3,10 @@ require 'rack-flash'
 require 'pry'
 class PatientsController < ApplicationController
     use Rack::Flash
-    configure do
-        enable :sessions
-        set :session_secret, "secret"
-    end
 
     get '/login' do
         if Helpers.is_logged_in?(session)
-            redirect to '/appointments/patient'
+            redirect to '/patient'
         end
 
         erb :'/patients/login'
@@ -21,8 +17,8 @@ class PatientsController < ApplicationController
         patient = Patient.find_by(:username => params["patient"]["username"])
         if patient && patient.authenticate(params["patient"]["password"])
             session[:user_id] = patient.id
-            #redirect "/patient"
-            redirect "/appointments/patient"
+            redirect "/patient"
+            #redirect "/appointments/patient"
         else
             flash[:login_error] = "Incorrect login. Please sign up"
             redirect '/signup'
@@ -38,16 +34,16 @@ class PatientsController < ApplicationController
         end
     end
 
-     #shows appointments and patient prescriptions and history
+    #shows appointments and patient prescriptions and history
+    #this is the home page for the patient
     #this is patient's own page, lists all appointments
-    # get '/patient' do
-    #     if !Helpers.is_logged_in?(session)
-    #         redirect to '/login'
-    #     end
-    #     # binding.pry
-    #     @patient = Helpers.current_user(session)
-    #     erb :'/patients/show'
-    # end
+    get '/patient' do
+        if !Helpers.is_logged_in?(session)
+            redirect to '/login'
+        end
+        @patient = Helpers.current_user(session)
+        erb :'/patients/show'
+    end
 
 
     

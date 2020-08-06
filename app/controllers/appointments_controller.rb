@@ -4,14 +4,16 @@ require 'pry'
 class AppointmentsController < ApplicationController
     use Rack::Flash
 
-    get '/appointments/patient' do
-        if !Helpers.is_logged_in?(session)
-            redirect to '/login'
-        end
-        @patient = Helpers.current_user(session)
-        #binding.pry
-        erb :'/patients/show' #shows all patient's appointments
-    end
+    
+
+    # get '/appointments/patient' do
+    #     if !Helpers.is_logged_in?(session)
+    #         redirect to '/login'
+    #     end
+    #     @patient = Helpers.current_user(session)
+    #     #binding.pry
+    #     erb :'/patients/show' #shows all patient's appointments
+    # end
 
     #book an appointment! new.erb should have a calendar feature that selects date and time
     #selects which therapist to choose
@@ -38,6 +40,8 @@ class AppointmentsController < ApplicationController
         erb :'/appointments/success'
     end
 
+   
+
     # TO Do: CRUD for appointments (create DONE read DONE update TODO delete TODO)
     get '/appointments/:id' do
         if !Helpers.is_logged_in?(session)
@@ -58,7 +62,7 @@ class AppointmentsController < ApplicationController
         #binding.pry
         if Helpers.current_user(session).id != @appointment.patient_id
             flash[:message] = "WARNING: You can only make edits to your appointments."
-            redirect to '/appointments/patient'
+            redirect to '/patient'
         end
 
         erb :'/appointments/edit_appointment'
@@ -72,7 +76,6 @@ class AppointmentsController < ApplicationController
         redirect to "/appointments/#{appointment.id}"
     end
 
-    #fix delete
     delete '/appointments/:id/delete' do
         if !Helpers.is_logged_in?(session)
             redirect to '/login'
@@ -81,13 +84,13 @@ class AppointmentsController < ApplicationController
         @appointment = Appointment.find(params[:id])
         if Helpers.current_user(session).id != @appointment.patient_id
             flash[:error] = "You can only cancel your appointments."
-            redirect to '/appointments/patient'
+            redirect to '/patient'
         end
         @appointment.delete
-        redirect to 'appointments/deleted'
+        redirect to "appointments/#{@appointment.id}/deleted"
     end
 
-    get '/appointments/deleted' do
+    get '/appointments/:id/deleted' do
         erb :'/appointments/deleted'
     end
 
