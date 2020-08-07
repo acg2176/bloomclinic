@@ -32,5 +32,6 @@ class ApplicationController < Sinatra::Base
 
   get '/contact' do
     erb :contact
+  end
 
 end

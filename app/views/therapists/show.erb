@@ -1,0 +1,11 @@
+<h1>Our Practitioners</h1>
+<br>
+<% @therapists.each do |therapist| %>
+    <ul>
+    <li><a href="/therapists/<%= therapist.id %>"><h1><%= therapist.name %></h1></li>
+    </ul>
+
+
+<% end %>
+
+<a href="/patient"><button>Back to Home</button></a>
