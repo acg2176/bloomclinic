@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
 
   get '/signup' do
     if Helpers.is_logged_in?(session)
-        redirect to '/appointments/patient'
+        redirect to '/patient'
     end
     erb :'/patients/create_patient'
   end
@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
 
     patient.save
     session[:user_id] == patient.id
-    redirect to '/appointments/patient'
+    redirect to '/patient'
   end
 
   get '/contact' do
