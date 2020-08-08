@@ -22,15 +22,17 @@
 <h3>Which therapist would you like to see?</h3>
 <% @therapists.each do |therapist| %>
     
-<input id="<%= therapist.name %>" type="radio" name="appointment[therapists][]" value="<%= therapist.id %>"><%= therapist.name %>
+<input id="<%= therapist.name %>" type="radio" name="appointment[therapists][]" value="<%= therapist.id %>" required><%= therapist.name %>
 <% end %>
+<br>
+<small>This is required.*</small>
 <br><br>
 
 <label for="appt_date"><h3>Select an appointment date:</h3></label>
 <input type="date" id="appt_date" name="appointment[appt_date]" required>
 <br><br>
 <label for="appt_time"><h3>Select a time:</h3></label>
-<input type="time" id="appt_time" name="appointment[appt_time]" min="09:00" max="18:00" required>
+<input type="time" id="appt_time" name="appointment[appt_time]" min="09:00" max="18:00" step="3600000" required>
 <small>Office Hours are 9am to 6pm</small>
 <br><br>
 <label for="concern"><h3>What is your Concern?</h3></label>
