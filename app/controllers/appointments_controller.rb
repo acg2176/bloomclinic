@@ -4,17 +4,6 @@ require 'pry'
 class AppointmentsController < ApplicationController
     use Rack::Flash
 
-    
-
-    # get '/appointments/patient' do
-    #     if !Helpers.is_logged_in?(session)
-    #         redirect to '/login'
-    #     end
-    #     @patient = Helpers.current_user(session)
-    #     #binding.pry
-    #     erb :'/patients/show' #shows all patient's appointments
-    # end
-
     #book an appointment! new.erb should have a calendar feature that selects date and time
     #selects which therapist to choose
     get '/appointments/new' do
@@ -80,7 +69,6 @@ class AppointmentsController < ApplicationController
         if !Helpers.is_logged_in?(session)
             redirect to '/login'
         end
-        binding.pry
         @appointment = Appointment.find(params[:id])
         if Helpers.current_user(session).id != @appointment.patient_id
             flash[:error] = "You can only cancel your appointments."
