@@ -3,15 +3,16 @@
     <%= flash[:login_error] %>
 <% end %>
   <body id="page-top">
-    <h1>Log In Please</h1>
     <form action="/login" method="POST">
-      <label for="username">Username:</label>
+      <label for="username">Username:</label><br>
       <input type="text" id="username" name="patient[username]">
-      <label for="password">Password:</label>
+      <br>
+      <label for="password">Password:</label><br>
       <input type="text" id="password" name="patient[password]">
+      <br>
       <input type="submit" value="Log In" id="submit">
     </form>
-    <br><br>
+    <br>
     <p>Do not have an account? </p>
     <a href="/signup">Sign Up Here</a>
 </div>
