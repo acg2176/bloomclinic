@@ -3,22 +3,20 @@
 <% if flash.has?(:login_error) %>
 <%= flash[:login_error] %>
 <% end %>
-
-<form action="/signup" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="patient[username]">
-        <br>
-        <br>
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="patient[email]">
-        <br>
-        <br>
-        <label for="password">Password:</label>
-        <input type="text" id="password" name="patient[password]">
-        <br>
-        <br>
-        <input type="submit" value="Sign Up" id="submit">
-        
-
-    </form>
+    <div class="container">
+        <form action="/signup" method="POST">
+            <label for="username">Username:</label><br>
+                <input type="text" id="username" name="patient[username]">
+            <br>
+            <br>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="patient[email]">
+            <br>
+            <br>
+            <label for="password">Password:</label><br>
+            <input type="text" id="password" name="patient[password]">
+            <br>
+            <input type="submit" value="Sign Up" id="submit">
+        </form>
+    </div>
 </main>
