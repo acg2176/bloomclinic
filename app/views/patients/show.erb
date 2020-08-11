@@ -5,7 +5,8 @@
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	      </button>
-	      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		  <div class="collapse navbar-collapse" id="navbarDropDown">
+		
 	        <div class="navbar-nav mr-auto">
 	          <a class="nav-item nav-link" href="/patient">Home</a>
 	          <a class="nav-item nav-link" href="/therapists">Our Staff</a>
@@ -18,21 +19,27 @@
 </header>
 <main>
 <br><br>
-<% if flash.has?(:message) %>
-<%= flash[:message] %>
-<% end %>
-<% if flash.has?(:error) %>
-<%= flash[:error] %>
-<% end %>
+	<div class="container">
+		<% if flash.has?(:message) %>
+		<%= flash[:message] %>
+		<% end %>
+		<% if flash.has?(:error) %>
+		<%= flash[:error] %>
+		<% end %>
+		<section class="list-appt">
+			<div class="list-appt-content">
+				<h1>Hi, <%= @patient.username %>!</h1>
+				<h2>Your Appointments</h2>
+				
+					<% @patient.appointments.each do |appointment| %>
+						<h3><a href='/appointments/<%= appointment.id %>'><%= appointment.appt_date.strftime("%A, %B %d") %>: <%= appointment.appt_time.strftime("%I:%M %p") %></a></h3>
+					
+				<% end %>
 
-<h1>Hi, <%= @patient.username %>!</h1>
-<h2>Your Appointments</h2>
-<% @patient.appointments.each do |appointment| %>
-    <ul>
-    <li><a href='/appointments/<%= appointment.id %>'><%= appointment.appt_date.strftime("%A, %B %d") %>: <%= appointment.appt_time.strftime("%I:%M %p") %></a></li>
-    </ul>
-<% end %>
+			</div>
+		</section>
 
-<h2>Ready to Book a new Appointment?</h2>
-<a href="/appointments/new"><button>Book a New Appointment</button></a>
+		<h2>Ready to Book a new Appointment?</h2>
+		<a href="/appointments/new"><button>Book a New Appointment</button></a>
+	</div>
 </main>
