@@ -1,15 +1,17 @@
 <header class="site-header">
 	  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="background-color: #f18973">
-	    <div class="container">
+	    <div class="container-header">
 	      <a class="navbar-brand mr-4" href="/patient">Bloom Clinic</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	      </button>
-	      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		  <div class="collapse navbar-collapse" id="navbarDropDown">
+		
 	        <div class="navbar-nav mr-auto">
 	          <a class="nav-item nav-link" href="/patient">Home</a>
 	          <a class="nav-item nav-link" href="/therapists">Our Staff</a>
-	          <a class="nav-item nav-link" href="/contact">Contact Us</a>
+			  <a class="nav-item nav-link" href="/contact">Contact Us</a>
+			  <a class="nav-item nav-link" href="/logout">Log Out</a>
 	        </div>
 	    </div>
 	</div>
@@ -17,20 +19,20 @@
 </header>
 <main>
 <br><br>
+<div class="container">
 <% if flash.has?(:message) %>
   <%= flash[:message] %>
 <% end %>
 <h3>Your appointment is scheduled on: <%= @appointment.appt_date.strftime("%A, %B %d") %></h3>
-<br><br>
+<br>
 <h3>Appointment Time: <%= @appointment.appt_time.strftime("%I:%M %p") %></h3>
-<br><br>
+<br>
 <h3>Therapist: <%= @appointment.therapist.name %></h3>
-<br><br>
+<br>
 <h3>Purpose for Appointment: <%= @appointment.concern %></h3>
+
+<a href='/appointments/<%= @appointment.id %>/edit'><button class="btn-book">Edit Appointment</button></a>
 <br><br>
-<a href='/appointments/<%= @appointment.id %>/edit'><button>Edit Appointment</button></a>
-
-
 <h3>Tips to make the most of your appointment:</h3>
 <ul>
     <li>1. Keep a pen and notebook or journal on hand in order to take down notes.</li>
@@ -41,8 +43,9 @@
 
 <form method="POST" action="/appointments/<%= @appointment.id %>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Cancel your Appointment">
+    <input type="submit" value="Cancel">
 </form>
 
-<a href="/patient"><button>Back to Appointments</button></a>
+<a href="/patient"><button class="btn-book">Back to Appointments</button></a>
+</div>
 </main>
