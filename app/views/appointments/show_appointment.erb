@@ -23,6 +23,7 @@
 <% if flash.has?(:message) %>
   <%= flash[:message] %>
 <% end %>
+<br>
 <h3>Your appointment is scheduled on: <%= @appointment.appt_date.strftime("%A, %B %d") %></h3>
 <br>
 <h3>Appointment Time: <%= @appointment.appt_time.strftime("%I:%M %p") %></h3>
