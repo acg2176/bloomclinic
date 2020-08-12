@@ -10,17 +10,20 @@
 	          <a class="nav-item nav-link" href="/patient">Home</a>
 	          <a class="nav-item nav-link" href="/therapists">Our Staff</a>
 	          <a class="nav-item nav-link" href="/contact">Contact Us</a>
-	        </div>
+			  <a class="nav-item nav-link" href="/logout">Log Out</a>
+			</div>
 	    </div>
 	</div>
 </nav>
 </header>
 <main>
-<br><br>
-<h1><%= @therapist.name %></h1>
-<h3>Email: <%= @therapist.email %></h3>
-<h3>Location: <%= @therapist.location %></h3>
-<h3>Bio: <%= @therapist.bio %></h3>
-
-<a href="/patient"><button>Back to Home</button></a>
+<br><br><br>
+<div class="container">
+	<h1><%= @therapist.name %></h1>
+	<br>
+	<p>Email: <%= @therapist.email %></p>
+	<p>Location: <%= @therapist.location %></p>
+	<p><%= @therapist.bio %></p>
+	<br>
+</div>
 </main>
