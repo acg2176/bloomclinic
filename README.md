@@ -1,5 +1,5 @@
 # bloomclinic
-## ## MVC Sinatra app
+## MVC Sinatra app
 This is an app created for a Teletherapy Clinic. Clients can sign in as users, schedule appointments through the app, update their appointments and also cancel them.
 
 
@@ -11,5 +11,5 @@ This is an app created for a Teletherapy Clinic. Clients can sign in as users, s
 5. Open the app on localhost.
 
 
-License:
+## License:
 https://opensource.org/licenses/MIT
