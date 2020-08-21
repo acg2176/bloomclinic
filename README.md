@@ -1,6 +1,6 @@
 # bloomclinic
-## Sinatra app
-This is web application created for a Teletherapy practice called the Bloom Clinic. Clients can sign in as users, schedule appointments through the app, update their appointments and also cancel them.
+## Description
+This is web application created for a Teletherapy practice called the Bloom Clinic. Clients can sign in as users, schedule appointments through the app, update their appointments and also cancel them. Built in Sinatra.
 
 
 ## Install Instructions and Usage:
