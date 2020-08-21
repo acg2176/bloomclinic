@@ -4,7 +4,8 @@
 	      <a class="navbar-brand mr-4" href="/patient">Bloom Clinic</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
-	      </button>
+		  </button>
+		  <div class="collapse navbar-collapse"></div>
 		  <div class="collapse navbar-collapse" id="navbarDropDown">
 		
 	        <div class="navbar-nav mr-auto">
@@ -18,7 +19,8 @@
 </nav>
 </header>
 <main>
-<div class="container">
+<br><br><br>
+<div class="container-main">
 <form method="POST" action="/appointments/<%= @appointment.id %>">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <h3>You may change your therapist:</h3>

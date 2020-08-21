@@ -13,7 +13,6 @@ class PatientsController < ApplicationController
     end
 
     post '/login' do
-        #binding.pry
         patient = Patient.find_by(:username => params["patient"]["username"])
         if patient && patient.authenticate(params["patient"]["password"])
             session[:user_id] = patient.id
@@ -28,15 +27,13 @@ class PatientsController < ApplicationController
     get '/logout' do
         if Helpers.is_logged_in?(session)
             session.clear
-            redirect '/login'
+            redirect '/'
         else
             redirect '/'
         end
     end
 
-    #shows appointments and patient prescriptions and history
-    #this is the home page for the patient
-    #this is patient's own page, lists all appointments
+
     get '/patient' do
         if !Helpers.is_logged_in?(session)
             redirect to '/login'
