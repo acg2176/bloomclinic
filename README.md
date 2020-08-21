@@ -1,6 +1,6 @@
 # bloomclinic
-## MVC Sinatra app
-This is an app created for a Teletherapy Clinic. Clients can sign in as users, schedule appointments through the app, update their appointments and also cancel them.
+## Sinatra app
+This is web application created for a Teletherapy practice called the Bloom Clinic. Clients can sign in as users, schedule appointments through the app, update their appointments and also cancel them.
 
 
 ## Install Instructions and Usage:
