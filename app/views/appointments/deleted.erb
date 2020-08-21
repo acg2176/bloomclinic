@@ -1,19 +1,30 @@
 <header class="site-header">
-	  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="background-color: #f18973">
+	  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top justify-content-md-center justify-content-start" style="background-color: #f18973">
 	    <div class="container">
-	      <a class="navbar-brand mr-4" href="/patient">Bloom Clinic</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+		<a class="navbar-brand d-md-none d-inline" href="/patient"><h2>Bloom Clinic</h2></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 		  </button>
-		  <div class="collapse navbar-collapse"></div>
-	      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-	        <div class="navbar-nav mr-auto">
-	          <a class="nav-item nav-link" href="/patient">Home</a>
-	          <a class="nav-item nav-link" href="/therapists">Our Staff</a>
-			  <a class="nav-item nav-link" href="/contact">Contact Us</a>
-			  <a class="nav-item nav-link" href="/logout">Log Out</a>
+		  <a class="nav-link" href="#_"><i class="fa fa-search mr-1"></i></a> 
 
-	        </div>
+	      <div class="navbar-collapse collapse justify-content-between align-items-center w-100" id="collapsingNavbar2">
+			<ul class="navbar-nav mx-auto text-md-center text-left">
+				<li class="nav-item">
+					<a class="nav-item nav-link" href="/patient">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-item nav-link" href="/therapists">Our Staff</a>
+				</li>
+				<li class="nav-item my-auto">
+                	<a class="nav-link navbar-brand mx-0 d-none d-md-inline" href="/patient">Bloom Clinic</a>
+            	</li>
+				<li class="nav-item">
+					<a class="nav-item nav-link" href="/contact">Contact Us</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-item nav-link" href="/logout">Log Out</a>
+				</li>
+	        </ul>
 	    </div>
 	</div>
 </nav>

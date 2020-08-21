@@ -1,0 +1,86 @@
+    body {
+        font-family: 'Alatsi'; font-size: 20px;
+        color: white;
+    }
+    
+
+    .container-main {
+      width: 600px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 50px;
+      background: salmon;
+      padding: 20px;
+      border-radius: 25px;
+      box-shadow: 0 0 10px gray;
+    }
+
+
+    .btn {
+        width: 150px;
+        height: 45px;
+        background-color: #FFF8DC;
+        color: #696969;
+        margin-top: 25px;
+        border-radius: 10px;
+        border: #FFF8DC 1px solid;
+        font-size: 18px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .btn-book {
+        width: 300px;
+        height: 45px;
+        background-color: #FFF8DC;
+        color: #696969;
+        margin-top: 25px;
+        border-radius: 10px;
+        border: #FFF8DC 1px solid;
+        font-size: 18px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .btn-therapist {
+        width: 500px;
+        height: 60px;
+        background-color: #FFF8DC;
+        color: #696969;
+        margin-top: 25px;
+        border-radius: 10px;
+        border: #FFF8DC 1px solid;
+        font-size: 18px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    input[type=submit] {
+        width: 150px;
+        height: 45px;
+        background-color: #FFF8DC;
+        color: #696969;
+        margin-top: 25px;
+        border-radius: 10px;
+        border: #FFF8DC 1px solid;
+        font-size: 18px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+
+      .list-appt {
+        flex: 1 1 0;
+        background-color: salmon;
+        overflow-y: scroll;
+        height: 100%;
+    }
+
+    .list-appt-content {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center;
+        margin-top: 35px; 
+    }
+
+    a {
+      color: #696969;
+    }
