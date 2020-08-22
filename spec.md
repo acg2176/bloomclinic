@@ -18,10 +18,11 @@ Specs:
 - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
     - Appointments can be created, read, updated, and destroyed
 - [x] Ensure that users can't modify content created by other users
-    - Only users who are logged in can modify their own content.
+    - Only users who are logged in can modify their own content by checking the user id before proceeding.
 - [x] Include user input validations
-    - 
+    - All parameters inserted in forms are validated before any action its taken, and user is warned and re-routed if any invalid data is present.
 - [x] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new)
+    - Rack-flash is a gem that is included in the Gemfile and is used to make flash messages when an error occurs.
 - [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
