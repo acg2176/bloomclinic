@@ -4,8 +4,7 @@ require 'pry'
 class AppointmentsController < ApplicationController
     use Rack::Flash
 
-    #book an appointment! new.erb should have a calendar feature that selects date and time
-    #selects which therapist to choose
+    
     get '/appointments/new' do
         if !Helpers.is_logged_in?(session)
             redirect to '/login'
@@ -17,8 +16,8 @@ class AppointmentsController < ApplicationController
 
     post '/appointments' do
         patient = Helpers.current_user(session)
+        # patient.appointments.build(:therapist_id => params[:appointment][:therapists][0].to_i, :appt_date => params[:appointment][:appt_date], :appt_time => params[:appointment][:appt_time], :concern => params[:appointment][:concern])
         @appointment = Appointment.create(:therapist_id => params[:appointment][:therapists][0].to_i, :patient_id => patient.id, :appt_date => params[:appointment][:appt_date], :appt_time => params[:appointment][:appt_time], :concern => params[:appointment][:concern])
-        #binding.pry
         @appointment.save
         redirect to '/appointments/success'
         
@@ -31,13 +30,13 @@ class AppointmentsController < ApplicationController
 
    
 
-    # TO Do: CRUD for appointments (create DONE read DONE update TODO delete TODO)
+   
     get '/appointments/:id' do
         if !Helpers.is_logged_in?(session)
             redirect to '/login'
         end
         @appointment = Appointment.find(params[:id])        
-        erb :'/appointments/show_appointment' #FIX THIS: add all information for this appointment
+        erb :'/appointments/show_appointment' 
     end
 
     get '/appointments/:id/edit' do
